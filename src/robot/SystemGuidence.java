@@ -1,7 +1,7 @@
 package robot;
 
 public class SystemGuidence extends Component implements ILineObserver{
-	public final static String tag = "SystemGuidence";
+	public static final String tag = "SystemGuidence";
 	private SystemDrive driveSystem;
 	private SystemLine lineSystem;
 	
