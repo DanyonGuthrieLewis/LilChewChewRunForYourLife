@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class SystemLine extends Component implements Runnable{
 	public static final String tag = "SystemLine";
-	private static final int MEDIAN_VALUE = 100;
+	private static final int MEDIAN_VALUE = 50;
 	
 	private Thread thread;
 	

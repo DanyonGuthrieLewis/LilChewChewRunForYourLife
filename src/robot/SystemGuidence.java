@@ -29,7 +29,10 @@ public class SystemGuidence extends Component implements ILineObserver{
 	
 	@Override
 	public void lineHitEvent() {
-		// TODO Auto-generated method stub
+		Direction direction = driveSystem.getDirection();
+		if (direction == Direction.FORWARD){
+			driveSystem.setDirection(Direction.BACKWARD);
+		}
 		
 	}
 

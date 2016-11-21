@@ -30,7 +30,7 @@ public abstract class Entity {
 	}
 	private void run(){
 		while (running){
-			
+			update();
 		}
 	}
 	public boolean removeComponent(String name){
@@ -59,9 +59,11 @@ public abstract class Entity {
 	}
 	
 	private void update(){
-		updateRobot();
+		updateEntity();
+		updateComponents();
 	}
-	protected abstract void updateRobot();
+	
+	protected abstract void updateEntity();
 	private void updateComponents(){
 		for(Component component : components){
 			synchronized (component) {
