@@ -1,4 +1,3 @@
-package robot;
 
 public class SystemDrive extends Component{
 	public static final String tag = "SystemDrive";

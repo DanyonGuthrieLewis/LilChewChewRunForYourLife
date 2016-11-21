@@ -1,4 +1,3 @@
-package robot;
 
 public abstract class Component {
 	protected String name = "Not Set!";

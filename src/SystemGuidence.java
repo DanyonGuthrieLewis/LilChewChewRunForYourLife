@@ -1,4 +1,4 @@
-package robot;
+
 
 public class SystemGuidence extends Component implements ILineObserver{
 	public static final String tag = "SystemGuidence";

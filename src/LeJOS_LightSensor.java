@@ -1,4 +1,4 @@
-package robot;
+
 
 import lejos.nxt.LightSensor;
 import lejos.nxt.SensorPort;

@@ -1,4 +1,3 @@
-package robot;
 
 public enum Direction {
 	FORWARD,
