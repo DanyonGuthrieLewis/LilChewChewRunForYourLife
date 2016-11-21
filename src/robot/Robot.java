@@ -10,7 +10,7 @@ public class Robot extends Entity{
 	}
 
 	@Override
-	protected void updateRobot() {
+	protected void updateEntity() {
 		// TODO Auto-generated method stub
 		
 	}
