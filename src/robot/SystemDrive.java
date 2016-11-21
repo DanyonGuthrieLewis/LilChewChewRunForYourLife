@@ -18,6 +18,12 @@ public class SystemDrive extends Component{
 		// TODO Auto-generated method stub
 		
 	}
+	public void setDirection(Direction direction){
+		driveSystem.setDirection(direction);
+	}
+	public Direction getDirection(){
+		return driveSystem.getDirection();
+	}
 	@Override
 	public void update() {
 		driveSystem.move();
