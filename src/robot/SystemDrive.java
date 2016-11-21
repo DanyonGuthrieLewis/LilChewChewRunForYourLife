@@ -14,6 +14,11 @@ public class SystemDrive extends Component{
 		
 	}
 	@Override
+	public void start() {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
 	public void update() {
 		driveSystem.move();
 	}

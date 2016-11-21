@@ -3,7 +3,8 @@ package robot;
 import java.util.ArrayList;
 
 public class SystemLine extends Component implements Runnable{
-	private final static int MEDIAN_VALUE = 100;
+	public static final String tag = "SystemLine";
+	private static final int MEDIAN_VALUE = 100;
 	
 	private Thread thread;
 	
@@ -16,12 +17,16 @@ public class SystemLine extends Component implements Runnable{
 	private boolean currentResult = false;
 	
 	public SystemLine(ILineSystem lineSystem) {
-		name = "SystemLine";
+		name = tag;
 		this.lineSystem = lineSystem;
 		thread = new Thread(this);
 	}
 	@Override
 	public void initialize() {
+		
+	}
+	@Override
+	public void start() {
 		thread.run();
 	}
 	public void addObserver(ILineObserver observer){
