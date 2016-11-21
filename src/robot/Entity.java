@@ -5,62 +5,72 @@ import java.util.ArrayList;
 public abstract class Entity {
 	private ArrayList<Component> components = new ArrayList<>();
 	private boolean running = true;
-	
-	public boolean addComponent(Component component){
+
+	public boolean addComponent(Component component) {
 		boolean canAdd = true;
-		for (Component existing : components){
-			if (existing.getName().equals(component.getName()));
+		for (Component existing : components) {
+			if (existing.getName().equals(component.getName()))
+				;
 		}
-		if (canAdd){
+		if (canAdd) {
 			component.setEntity(this);
 			components.add(component);
 		}
 		return canAdd;
 	}
-	public void initialize(){
-		for (Component component : components){
+
+	public void initialize() {
+		for (Component component : components) {
 			component.initialize();
 		}
 	}
-	public void start(){
+
+	public void start() {
 		run();
 	}
-	private void run(){
-		while (running){
-			
+
+	private void run() {
+		while (running) {
+			update();
 		}
 	}
-	public boolean removeComponent(String name){
+
+	public boolean removeComponent(String name) {
 		boolean canRemove = false;
 		Component toRemove = null;
-		for (Component component : components){
-			if (component.getName().equals(name)){
+		for (Component component : components) {
+			if (component.getName().equals(name)) {
 				canRemove = true;
 				toRemove = component;
 			}
 		}
-		if (canRemove){
+		if (canRemove) {
 			components.remove(toRemove);
 		}
 		return canRemove;
 	}
-	public Component getComponent(String name){
+
+	public Component getComponent(String name) {
 		Component toGet = null;
-		for (Component component : components){
-			if (component.getName().equals(name)){
+		for (Component component : components) {
+			if (component.getName().equals(name)) {
 				toGet = component;
 				break;
 			}
 		}
 		return toGet;
 	}
+
+	private void update() {
+		updateEntity();
+		updateComponents();
 	
-	private void update(){
-		updateRobot();
 	}
-	protected abstract void updateRobot();
-	private void updateComponents(){
-		for(Component component : components){
+
+	protected abstract void updateEntity();
+
+	private void updateComponents() {
+		for (Component component : components) {
 			synchronized (component) {
 				component.update();
 			}
