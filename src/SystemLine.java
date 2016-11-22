@@ -20,6 +20,7 @@ public class SystemLine extends Component implements Runnable{
 		name = tag;
 		this.lineSystem = lineSystem;
 		thread = new Thread(this);
+		observers = new ArrayList<>();
 	}
 	@Override
 	public void initialize() {

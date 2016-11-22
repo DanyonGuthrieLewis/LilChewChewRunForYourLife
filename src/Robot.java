@@ -1,4 +1,4 @@
-
+import lejos.nxt.Button;
 
 public class Robot extends Entity{
 
@@ -11,8 +11,9 @@ public class Robot extends Entity{
 
 	@Override
 	protected void updateEntity() {
-		// TODO Auto-generated method stub
-		
+		if (Button.ENTER.isDown()){
+			System.exit(0);
+		}
 	}
 	
 }
