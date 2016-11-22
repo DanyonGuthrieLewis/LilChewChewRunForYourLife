@@ -3,8 +3,8 @@
 import java.util.ArrayList;
 
 public class SystemLine extends Component implements Runnable{
-	public static final String tag = "SystemLine";
-	private static final int MEDIAN_VALUE = 50;
+	public static final ComponentType tag = ComponentType.LINE;
+	private static final int MEDIAN_VALUE = 30;
 	
 	private Thread thread;
 	
@@ -17,7 +17,6 @@ public class SystemLine extends Component implements Runnable{
 	private boolean currentResult = false;
 	
 	public SystemLine(ILineSystem lineSystem) {
-		name = tag;
 		this.lineSystem = lineSystem;
 		thread = new Thread(this);
 		observers = new ArrayList<>();
@@ -28,13 +27,22 @@ public class SystemLine extends Component implements Runnable{
 	}
 	@Override
 	public void start() {
-		thread.run();
+		thread.start();
 	}
 	public void addObserver(ILineObserver observer){
 		observers.add(observer);
 	}
 	@Override
 	public void update() {
+
+	}
+	@Override
+	public void run() {
+		while(running){
+			updateThread();
+		}
+	}
+	public void updateThread(){
 		if (hasChanged()){
 			notifyObservers();
 		}
@@ -52,15 +60,13 @@ public class SystemLine extends Component implements Runnable{
 			}
 		}
 	}
-	@Override
-	public void run() {
-		while(running){
-			update();
-		}
-	}
 	public void stop(){
 		synchronized (this) {
 			running = false;
 		}
+	}
+	@Override
+	public ComponentType getType() {
+		return tag;
 	}
 }

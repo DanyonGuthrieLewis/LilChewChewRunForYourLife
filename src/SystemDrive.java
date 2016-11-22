@@ -1,14 +1,10 @@
 
 public class SystemDrive extends Component{
-	public static final String tag = "SystemDrive";
+	public static final ComponentType tag = ComponentType.DRIVE;
 	private static final Direction STARTING_DIRECTION = Direction.FORWARD;
 	private IDriveSystem driveSystem;
 	public SystemDrive(IDriveSystem driveSystem) {
 		this.driveSystem = driveSystem;
-	}
-	public SystemDrive() {
-		name = tag;
-		setDirection(STARTING_DIRECTION);
 	}
 	@Override
 	public void initialize() {
@@ -16,8 +12,7 @@ public class SystemDrive extends Component{
 	}
 	@Override
 	public void start() {
-		// TODO Auto-generated method stub
-		
+		setDirection(STARTING_DIRECTION);
 	}
 	public void setDirection(Direction direction){
 		driveSystem.setDirection(direction);
@@ -28,6 +23,10 @@ public class SystemDrive extends Component{
 	@Override
 	public void update() {
 		driveSystem.move();
+	}
+	@Override
+	public ComponentType getType() {
+		return tag;
 	}
 
 }

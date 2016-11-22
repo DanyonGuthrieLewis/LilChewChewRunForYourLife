@@ -1,14 +1,25 @@
 
 import java.util.ArrayList;
 
+import lejos.nxt.Sound;
+
 public abstract class Entity {
 	private ArrayList<Component> components = new ArrayList<>();
 	private boolean running = true;
 	
 	public boolean addComponent(Component component){
+		if (component == null) return false;
 		boolean canAdd = true;
-		for (Component existing : components){
-			if (existing.getName().equals(component.getName()));
+		if (components.size() > 0){
+
+			for (Component existing : components){
+				existing.getType();
+				component.getType();
+				if (existing.getType().equals(component.getType()))
+				{
+					canAdd = false;
+				}
+			}
 		}
 		if (canAdd){
 			component.setEntity(this);
@@ -23,6 +34,7 @@ public abstract class Entity {
 	}
 	public void start(){
 		for (Component component : components){
+			System.out.println(component.getType().toString() + " start");
 			component.start();
 		}
 		run();
@@ -36,7 +48,7 @@ public abstract class Entity {
 		boolean canRemove = false;
 		Component toRemove = null;
 		for (Component component : components){
-			if (component.getName().equals(name)){
+			if (component.getType().equals(name)){
 				canRemove = true;
 				toRemove = component;
 			}
@@ -46,10 +58,10 @@ public abstract class Entity {
 		}
 		return canRemove;
 	}
-	public Component getComponent(String name){
+	public Component getComponent(ComponentType type){
 		Component toGet = null;
 		for (Component component : components){
-			if (component.getName().equals(name)){
+			if (component.getType().equals(type)){
 				toGet = component;
 				break;
 			}
@@ -58,11 +70,9 @@ public abstract class Entity {
 	}
 	
 	private void update(){
-		updateEntity();
 		updateComponents();
 	}
 	
-	protected abstract void updateEntity();
 	private void updateComponents(){
 		for(Component component : components){
 			synchronized (component) {

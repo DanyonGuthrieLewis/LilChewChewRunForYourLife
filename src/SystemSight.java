@@ -4,7 +4,7 @@ import lejos.nxt.SensorPort;
 import lejos.nxt.UltrasonicSensor;
 
 public class SystemSight extends Component{
-	public static final String tag = "SystemSight";
+	public static final ComponentType tag = ComponentType.SIGHT;
 	
 	private UltrasonicSensor ultrasonicSensor;
 	
@@ -26,5 +26,8 @@ public class SystemSight extends Component{
 		// TODO Auto-generated method stub
 		
 	}
-
+	@Override
+	public ComponentType getType() {
+		return tag;
+	}
 }

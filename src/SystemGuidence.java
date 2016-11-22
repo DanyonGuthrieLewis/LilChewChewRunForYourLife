@@ -1,18 +1,14 @@
 
 
 public class SystemGuidence extends Component implements ILineObserver{
-	public static final String tag = "SystemGuidence";
+	public static final ComponentType tag = ComponentType.GUIDENCE;
 	private SystemDrive driveSystem;
 	private SystemLine lineSystem;
 	
-	public SystemGuidence() {
-		name = tag;
-	}
 	@Override
 	public void initialize() {
 		driveSystem = (SystemDrive) entity.getComponent(SystemDrive.tag);
 		lineSystem = (SystemLine) entity.getComponent(SystemLine.tag);
-		
 		lineSystem.addObserver(this);
 	}
 
@@ -32,10 +28,16 @@ public class SystemGuidence extends Component implements ILineObserver{
 		
 		Direction direction = driveSystem.getDirection();
 		if (direction == Direction.FORWARD){
+			System.out.println("Triggered.");
 			driveSystem.setDirection(Direction.BACKWARD);
 		}
 		
 	}
 
-
+	@Override
+	public ComponentType getType() {
+		return tag;
+	}
+	
+	
 }
