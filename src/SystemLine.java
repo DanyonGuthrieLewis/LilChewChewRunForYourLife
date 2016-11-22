@@ -59,7 +59,16 @@ public class SystemLine extends Component implements Runnable{
 				observer.lineHitEvent();
 			}
 		}
+		trySleep(500);
 	}
+	private void trySleep(long duration){
+		try {
+			Thread.sleep(duration);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public void stop(){
 		synchronized (this) {
 			running = false;

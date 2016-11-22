@@ -28,16 +28,17 @@ public class SystemGuidence extends Component implements ILineObserver{
 		
 		Direction direction = driveSystem.getDirection();
 		if (direction == Direction.FORWARD){
-			System.out.println("Triggered.");
 			driveSystem.setDirection(Direction.BACKWARD);
 		}
-		
+		else if (direction == Direction.BACKWARD){
+			driveSystem.setDirection(Direction.FORWARD);
+		}
 	}
 
 	@Override
 	public ComponentType getType() {
 		return tag;
 	}
-	
+
 	
 }
